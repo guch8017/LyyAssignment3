@@ -26,6 +26,23 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mWebView = findViewById(R.id.main_browser);
 
+        Button btn_menu = findViewById(R.id.btn_menu);
+        Button btn_upload = findViewById(R.id.btn_upload);
+
+        btn_upload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mWebView.loadUrl(Constant.JS_MENU_CLICK);
+            }
+        });
+
+        btn_menu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mWebView.loadUrl(Constant.JS_MENU_CLICK);
+            }
+        });
+
         mWebView.getSettings().setJavaScriptEnabled(true);
         mWebView.setWebViewClient(new WebViewClient(){
             @Override
@@ -42,6 +59,9 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "Redirect to self-hosted login activity...", Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                     startActivityForResult(intent, 0);
+                }else{
+                    // 移除HTML元素
+                    mWebView.loadUrl(Constant.JS_REMOVE_ELEMENTS);
                 }
             }
         });
