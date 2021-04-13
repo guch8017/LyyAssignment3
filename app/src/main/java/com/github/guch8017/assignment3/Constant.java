@@ -9,6 +9,7 @@ public class Constant {
 
     public static final String HOST_URL = "http://106.52.171.165:8077";
     public static final String LOGIN_S = "/login";
+    public static final String UPLOAD_S = "/upload";
 
     public static final String JS_REMOVE_ELEMENTS =
             "javascript: (function(){" +
